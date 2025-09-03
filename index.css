@@ -1,0 +1,193 @@
+/**
+ * =====================================
+ *         UI DESIGN SYSTEM
+ * =====================================
+ * 
+ * Project: Racing League Community
+ * Type: Sports/Racing Website
+ * 
+ * DESIGN PHILOSOPHY
+ * -----------------
+ * Core Principle: Sleek performance meets welcoming community
+ * Design Style: Minimalist with racing-inspired accents
+ * Emotion Goal: Professional excitement with approachable warmth
+ * 
+ * VISUAL LANGUAGE
+ * ----------------
+ * Primary Focus: Speed, precision, community
+ * Hierarchy: Bold headlines, clean data display, subtle motion
+ * Whitespace: Generous breathing room, uncluttered layouts
+ * 
+ * COLOR SYSTEM
+ * -------------
+ * Background: 220 13% 9% - Deep navy charcoal base
+ * Foreground: 0 0% 98% - Crisp white typography for readability
+ * Accent: 0 86% 59% - Electric red for CTAs and highlights
+ * Racing Blue: 220 91% 59% - Secondary accent for data
+ * Muted: 220 9% 46% - Subtle text and borders
+ * 
+ * TYPOGRAPHY
+ * ----------
+ * Display: Inter - Bold headlines and race data
+ * Body: Inter - Light, readable content
+ * Scale: Strong hierarchy with generous spacing
+ * 
+ * INTERACTIONS
+ * ------------
+ * Feedback: Smooth 200-300ms transitions
+ * Hover: Subtle glow and scale effects
+ * States: Racing-inspired motion hints
+ * 
+ * ACCESSIBILITY
+ * -------------
+ * Contrast: WCAG AA compliant
+ * Focus: High-contrast indicators
+ * Motion: Respects user preferences
+ * ====================================
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light mode - Racing theme */
+    --background: 0 0% 100%;
+    --foreground: 220 13% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 9%;
+    --primary: 0 86% 59%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 220 13% 96%;
+    --secondary-foreground: 220 13% 9%;
+    --muted: 220 13% 96%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 220 91% 59%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 0 86% 59%;
+    --chart-1: 0 86% 59%;
+    --chart-2: 220 91% 59%;
+    --chart-3: 120 100% 50%;
+    --chart-4: 60 100% 50%;
+    --chart-5: 280 100% 70%;
+    --radius: 0.5rem;
+    
+    /* Racing-specific colors */
+    --racing-red: 0 86% 59%;
+    --racing-blue: 220 91% 59%;
+    --racing-green: 120 100% 40%;
+    --racing-gold: 43 96% 56%;
+  }
+  
+  .dark {
+    /* Dark mode - Racing theme with deep navy */
+    --background: 220 13% 9%;
+    --foreground: 0 0% 98%;
+    --card: 220 13% 11%;
+    --card-foreground: 0 0% 98%;
+    --popover: 220 13% 11%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 86% 59%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 220 13% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 220 13% 15%;
+    --muted-foreground: 220 9% 63%;
+    --accent: 220 91% 59%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 15%;
+    --input: 220 13% 15%;
+    --ring: 0 86% 59%;
+    --chart-1: 0 86% 59%;
+    --chart-2: 220 91% 59%;
+    --chart-3: 120 100% 50%;
+    --chart-4: 60 100% 50%;
+    --chart-5: 280 100% 70%;
+    
+    /* Racing-specific colors for dark mode */
+    --racing-red: 0 86% 59%;
+    --racing-blue: 220 91% 59%;
+    --racing-green: 120 100% 50%;
+    --racing-gold: 43 96% 66%;
+  }
+}
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+    font-variation-settings: 'opsz' 32;
+  }
+  
+  /* Racing-themed animations */
+  @keyframes race-pulse {
+    0%, 100% { 
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 0.8;
+      transform: scale(1.02);
+    }
+  }
+  
+  @keyframes speed-lines {
+    0% { 
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% { 
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes speedLine {
+    0% { 
+      transform: translateX(-100vw);
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% { 
+      transform: translateX(100vw);
+      opacity: 0;
+    }
+  }
+  
+  .racing-pulse {
+    animation: race-pulse 2s ease-in-out infinite;
+  }
+  
+  .speed-lines::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, hsl(var(--primary)) 50%, transparent 100%);
+    animation: speed-lines 3s ease-in-out infinite;
+    opacity: 0.1;
+  }
+}
